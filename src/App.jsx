@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import TodoListContainer from './components/TodoListContainer.jsx'
 import MyUtils from './components/MyUtils'
 import TodoForm from './components/TodoForm.jsx'
@@ -12,6 +12,8 @@ function App() {
     const [newTodo, setNewTodo] = useState('')
     const [counter, setCounter] = useState(0)
 
+    const input_ref = createRef()
+
     useEffect(() => {
         console.log(`todos:`, todos)
         const getLocalStorage = () => {
@@ -24,11 +26,13 @@ function App() {
                 }
                 else if (MyUtils.isEmpty(todos)) {
                     setTodos(local_data)
+                    setCounter(local_data.length)
                     saveLocalStorage()
                 }
             } 
         }
         getLocalStorage()
+        console.log(counter)
     }, [counter])
 
     useEffect(() => {
@@ -57,6 +61,7 @@ function App() {
             setTodos([...todos, {index: counter, text: newTodo, check: false}])
             setNewTodo()
             e.target.value = ''
+            input_ref.current.value = ''
         }
     }
 
@@ -67,10 +72,10 @@ function App() {
         setCounter(0)
     }
 
-    const todo_item_list = todos.map((todo_item, index) => 
+    const todo_item_list = todos.map((todo_item, idx) => 
         <TodoItem 
-            key={index}
-            index={index}
+            key={idx}
+            idx={idx}
             text={todo_item.text}
             check={todo_item.check}
             todos={todos}
@@ -86,6 +91,7 @@ function App() {
                 <TodoForm 
                     todos={todos}
                     addTodo={addTodo}
+                    input_ref={input_ref}
                     onKeyPressHandler={onKeyPressHandler}
                     onChangeHandler={onChangeHandler}
                     removeAll={removeAll}
