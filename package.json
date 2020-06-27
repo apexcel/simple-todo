@@ -6,8 +6,10 @@
   "homepage": "https://oogie826.github.io/simple-todo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --open --config ./webpack.config.js",
     "start": "webpack --open --config ./webpack.config.js",
-    "start:dev": "webpack-dev-server --open --config ./webpack.dev.config.js"
+    "start:dev": "webpack-dev-server --open --config ./webpack.dev.config.js",
+    "deploy:github": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +35,7 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
-    "webpack": "^4.43.0"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }

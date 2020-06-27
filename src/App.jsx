@@ -15,7 +15,7 @@ function App() {
     const input_ref = createRef()
 
     useEffect(() => {
-        console.log(`todos:`, todos)
+        //console.log(`todos:`, todos)
         const getLocalStorage = () => {
             const local_data = JSON.parse(localStorage.getItem('storage'))
 
@@ -32,7 +32,7 @@ function App() {
             } 
         }
         getLocalStorage()
-        console.log(counter)
+        //console.log(counter)
     }, [counter])
 
     useEffect(() => {
@@ -46,6 +46,7 @@ function App() {
     const onChangeHandler = (e) => {
         e.preventDefault()
         setNewTodo(e.target.value)
+        console.log(e.target.value)
     }
 
     const onKeyPressHandler = (e) => {
@@ -56,7 +57,7 @@ function App() {
 
     const addTodo = (e) => {
         e.preventDefault()
-        if (!MyUtils.isEmpty(newTodo)) {
+        if (!MyUtils.isEmpty(newTodo) && newTodo.trim() !== '') {
             setCounter(counter + 1)
             setTodos([...todos, {index: counter, text: newTodo, check: false}])
             setNewTodo()
@@ -70,6 +71,7 @@ function App() {
         localStorage.clear()
         setTodos([])
         setCounter(0)
+        input_ref.current.value = ''
     }
 
     const todo_item_list = todos.map((todo_item, idx) => 

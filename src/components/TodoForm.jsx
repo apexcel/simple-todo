@@ -14,10 +14,10 @@ export default function TodoForm({addTodo, input_ref, onKeyPressHandler, onChang
     return(
         <div className='todo-form'>
             <input ref={input_ref} className='input' type='text' onChange={onChangeHandler} onKeyPress={onKeyPressHandler} />
-            <button onClick={addTodo}>
+            <button className='buttons' onClick={addTodo}>
                 add
             </button>
-            <button onClick={removeAll}>
+            <button className='buttons' onClick={removeAll}>
                 del all
             </button>
         </div>
