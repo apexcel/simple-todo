@@ -9,18 +9,13 @@ TodoForm.propTypes = {
     input_ref: PropTypes.any
 }
 
-export default function TodoForm({addTodo, input_ref, onKeyPressHandler, onChangeHandler, removeAll}) {
+export default function TodoForm({ addTodo, input_ref, onKeyPressHandler, onChangeHandler, removeAll }) {
 
-    return(
+    return (
         <div className='todo-form'>
             <input ref={input_ref} className='input' type='text' onChange={onChangeHandler} onKeyPress={onKeyPressHandler} />
-            <button className='buttons' onClick={addTodo}>
-                add
-            </button>
-            <button className='buttons' onClick={removeAll}>
-                del all
-            </button>
+            <button className='buttons' onClick={addTodo}>add</button>
+            <button className='buttons' onClick={removeAll}>del all</button>
         </div>
     )
-
 }

@@ -4,16 +4,16 @@ import PropTypes from 'prop-types'
 
 import '../styles/TodoListContainer.scss'
 
-TodoListContainer.propTypes ={
+TodoListContainer.propTypes = {
     form: PropTypes.object,
     children: PropTypes.any
 }
 
-export default function TodoListContainer({form, children}) {
-    return(
+export default function TodoListContainer({ form, children }) {
+    return (
         <main className='todo-list-container'>
             <div className='todos-container'>
-                <Today/>
+                <Today />
                 <section className='todo-form-container'>
                     {form}
                 </section>
